@@ -38,7 +38,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ```elixir
 config :logger,
-  backends: [LagerLoggerBackend],
+  backends: [LoggerLagerBackend],
   level: :debug
 ```
 
