@@ -24,6 +24,8 @@ defmodule LoggerLagerBackend.Mixfile do
   end
 
   defp deps do
-    []
+    [
+      {:lager, github: "basho/lager", ref: "master", only: :test},
+    ]
   end
 end

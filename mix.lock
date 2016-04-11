@@ -1,0 +1,2 @@
+%{"goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "212299233c7e7eb63a97be2777e1c05ebaa58dbe", [tag: "0.1.8"]},
+  "lager": {:git, "https://github.com/basho/lager.git", "45fe95ba6cd964b7a667394c4e671a5afe8f5a42", [ref: "master"]}}
