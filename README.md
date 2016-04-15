@@ -20,27 +20,38 @@ Known limitations:
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+Add `logger_lager_backend` to your list of dependencies in `mix.exs`:
 
-  1. Add logger_lager_backend to your list of dependencies in `mix.exs`:
-
-        def deps do
-          [{:logger_lager_backend, "~> 0.0.1"}]
-        end
-
-  2. Ensure logger_lager_backend is started before your application:
-
-        def application do
-          [applications: [:logger_lager_backend]]
-        end
+```elixir
+def deps do
+  [{:logger_lager_backend, "~> 0.0.1"}]
+end
+```
 
 ## Configuration
+
+Instruct `Logger` to use `logger_lager_backend`:
 
 ```elixir
 config :logger,
   backends: [LoggerLagerBackend],
   level: :debug
 ```
+
+This sends all messages of level `debug` or higher to `lager`. They will then
+be subject to filtering and routing according to whichever `lager` config you
+have in place.
+
+## Known issues
+
+If you get `FORMAT ERROR` messages like this one:
+
+```
+FORMAT ERROR: "~s" [[<<"GenServer :redis_sub_0_8 terminating">>,<<"\n** (stop) ">>|<<":redis_down">>]
+```
+
+You're probably hitting [basho/lager#326](https://github.com/basho/lager/issues/326). Upgrade
+`lager` to `3.2.0` or more recent.
 
 ## Related projects
 
