@@ -42,7 +42,7 @@ This sends all messages of level `debug` or higher to `lager`. They will then
 be subject to filtering and routing according to whichever `lager` config you
 have in place.
 
-## Known issues
+## Troubleshooting
 
 ### `FORMAT ERROR`s in log
 
