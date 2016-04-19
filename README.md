@@ -44,14 +44,36 @@ have in place.
 
 ## Known issues
 
+### `FORMAT ERROR`s in log
+
 If you get `FORMAT ERROR` messages like this one:
 
-```
+```text
 FORMAT ERROR: "~s" [[<<"GenServer :redis_sub_0_8 terminating">>,<<"\n** (stop) ">>|<<":redis_down">>]
 ```
 
 You're probably hitting [basho/lager#326](https://github.com/basho/lager/issues/326). Upgrade
 `lager` to `3.2.0` or more recent.
+
+### `Elixir.Logger.Supervisor` error on startup
+
+If you get the following message on startup:
+
+```text
+[error] Supervisor 'Elixir.Logger.Supervisor' had child 'Elixir.Logger.ErrorHandler' started with
+  'Elixir.Logger.Watcher':watcher(error_logger, 'Elixir.Logger.ErrorHandler',
+  {true,false,500}, link) at <0.422.0> exit with reason normal in context child_terminated
+```
+
+Make sure the `:lager` application is started before `:logger`, by putting
+`:lager` first in your `applications` list in `mix.exs`:
+
+```elixir
+def application do
+  [applications: [:lager, :logger, …],
+   mod: {MyApp, []}]
+end
+```
 
 ## Related projects
 
