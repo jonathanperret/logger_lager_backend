@@ -24,7 +24,7 @@ Add `logger_lager_backend` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:logger_lager_backend, "~> 0.0.1"}]
+  [{:logger_lager_backend, "~> 0.0.2"}]
 end
 ```
 
