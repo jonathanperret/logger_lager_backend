@@ -20,7 +20,7 @@ defmodule LoggerLagerBackend.Mixfile do
   end
 
   def application do
-    [applications: [:logger]]
+    [applications: [:lager, :logger]]
   end
 
   defp deps do

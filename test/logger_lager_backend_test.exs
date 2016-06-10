@@ -10,4 +10,10 @@ defmodule LoggerLagerBackendTest do
     # see https://github.com/basho/lager/issues/326
     Logger.info [["hello", 9, "world" | [9 | "you"]]]
   end
+
+  test "Logging UTF-8" do
+    Logger.info "12µs"
+    Logger.info '12µs'
+    Logger.info fn -> "13µs" end
+  end
 end

@@ -20,7 +20,7 @@ defmodule LoggerLagerBackend do
   defp to_lager_level(level), do: level
 
   def handle_event({level, _groupleader, {Logger, message, _timestamp, metadata}}, state) do
-    :lager.dispatch_log(@sink, to_lager_level(level), metadata, '~s', [message], @truncation_size, :safe)
+    :lager.dispatch_log(@sink, to_lager_level(level), metadata, '~ts', [message], @truncation_size, :safe)
     {:ok, state}
   end
 end
