@@ -35,12 +35,16 @@ Instruct `Logger` to use `logger_lager_backend`:
 ```elixir
 config :logger,
   backends: [LoggerLagerBackend],
+  handle_otp_reports: false,
   level: :debug
 ```
 
 This sends all messages of level `debug` or higher to `lager`. They will then
 be subject to filtering and routing according to whichever `lager` config you
 have in place.
+
+We also use `handle_otp_reports: false` to avoid having messages from the
+Erlang's built-in `error_logger` module appear twice in the output.
 
 ## Troubleshooting
 

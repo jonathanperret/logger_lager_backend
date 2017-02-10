@@ -16,4 +16,8 @@ defmodule LoggerLagerBackendTest do
     Logger.info '12µs'
     Logger.info fn -> "13µs" end
   end
+
+  test "OTP logs" do
+    :error_logger.error_msg 'should appear only once'
+  end
 end
