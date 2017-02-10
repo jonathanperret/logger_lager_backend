@@ -1,7 +1,7 @@
 # LoggerLagerBackend
 
-A `lager` (https://github.com/basho/lager) backend for Elixir's `Logger`
-(http://elixir-lang.org/docs/master/logger/Logger.html).
+A `lager` (https://github.com/erlang-lager/lager) backend for Elixir's `Logger`
+(https://hexdocs.pm/logger/Logger.html).
 
 That is, it routes messages generated with `Logger.<level>()` to `lager`. This
 is useful if you have a mixed Erlang/Elixir project and have decided to
@@ -52,7 +52,7 @@ If you get `FORMAT ERROR` messages like this one:
 FORMAT ERROR: "~s" [[<<"GenServer :redis_sub_0_8 terminating">>,<<"\n** (stop) ">>|<<":redis_down">>]
 ```
 
-You're probably hitting [basho/lager#326](https://github.com/basho/lager/issues/326). Upgrade
+You're probably hitting [erlang-lager/lager#326](https://github.com/erlang-lager/lager/issues/326). Upgrade
 `lager` to `3.2.0` or more recent.
 
 ### `Elixir.Logger.Supervisor` error on startup

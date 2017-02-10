@@ -7,7 +7,7 @@ defmodule LoggerLagerBackendTest do
   end
 
   test "Logging iodata" do
-    # see https://github.com/basho/lager/issues/326
+    # see https://github.com/erlang-lager/lager/issues/326
     Logger.info [["hello", 9, "world" | [9 | "you"]]]
   end
 
