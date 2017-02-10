@@ -8,8 +8,8 @@ defmodule LoggerLagerBackend.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     package: package,
-     deps: deps]
+     package: package(),
+     deps: deps()]
   end
 
   defp package do
@@ -25,7 +25,7 @@ defmodule LoggerLagerBackend.Mixfile do
 
   defp deps do
     [
-      {:lager, github: "basho/lager", ref: "master", only: :test},
+      {:lager, "~> 3.2"},
     ]
   end
 end

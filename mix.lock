@@ -1,2 +1,2 @@
-%{"goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "212299233c7e7eb63a97be2777e1c05ebaa58dbe", [tag: "0.1.8"]},
-  "lager": {:git, "https://github.com/basho/lager.git", "45fe95ba6cd964b7a667394c4e671a5afe8f5a42", [ref: "master"]}}
+%{"goldrush": {:hex, :goldrush, "0.1.9", "f06e5d5f1277da5c413e84d5a2924174182fb108dabb39d5ec548b27424cd106", [:rebar3], []},
+  "lager": {:hex, :lager, "3.2.4", "a6deb74dae7927f46bd13255268308ef03eb206ec784a94eaf7c1c0f3b811615", [:rebar3], [{:goldrush, "0.1.9", [hex: :goldrush, optional: false]}]}}
