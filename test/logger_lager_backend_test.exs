@@ -20,4 +20,8 @@ defmodule LoggerLagerBackendTest do
   test "OTP logs" do
     :error_logger.error_msg 'should appear only once'
   end
+
+  test "flush" do
+    Logger.flush
+  end
 end

@@ -24,6 +24,11 @@ defmodule LoggerLagerBackend do
     {:ok, state}
   end
 
+  def handle_event(:flush, state) do
+    # No real lager equivalent
+    {:ok, state}
+  end
+
   # gen_event boilerplate
 
   def handle_info(_msg, state) do
