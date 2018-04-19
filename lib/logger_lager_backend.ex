@@ -23,4 +23,18 @@ defmodule LoggerLagerBackend do
     :lager.dispatch_log(@sink, to_lager_level(level), metadata, '~ts', [message], @truncation_size, :safe)
     {:ok, state}
   end
+
+  # gen_event boilerplate
+
+  def handle_info(_msg, state) do
+    {:ok, state}
+  end
+
+  def terminate(_reason, _state) do
+    :ok
+  end
+
+  def code_change(_old, state, _extra) do
+    {:ok, state}
+  end
 end

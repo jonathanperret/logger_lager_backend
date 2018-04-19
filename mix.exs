@@ -8,6 +8,7 @@ defmodule LoggerLagerBackend.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     elixirc_options: [ warnings_as_errors: true ],
      package: package(),
      deps: deps()]
   end
