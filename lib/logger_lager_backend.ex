@@ -9,18 +9,25 @@ defmodule LoggerLagerBackend do
   @truncation_size 4096
 
   def init(__MODULE__) do
-    {:ok, nil}
+    sinks = [@sink | extra_sinks()]
+
+    {:ok, %{sinks: sinks}}
   end
 
   def handle_call({:configure, _opts}, state) do
-    {:ok, :ok, state}
+    sinks = [@sink | extra_sinks()]
+
+    {:ok, :ok, %{state | sinks: sinks}}
   end
 
   defp to_lager_level(:warn), do: :warning
   defp to_lager_level(level), do: level
 
   def handle_event({level, _groupleader, {Logger, message, _timestamp, metadata}}, state) do
-    :lager.dispatch_log(@sink, to_lager_level(level), metadata, '~ts', [message], @truncation_size, :safe)
+    for sink <- state.sinks do
+      :lager.dispatch_log(sink, to_lager_level(level), metadata, '~ts', [message], @truncation_size, :safe)
+    end
+
     {:ok, state}
   end
 
@@ -29,17 +36,13 @@ defmodule LoggerLagerBackend do
     {:ok, state}
   end
 
-  # gen_event boilerplate
+  def code_change(_vsn, nil, _extra) do
+    sinks = [@sink | extra_sinks()]
 
-  def handle_info(_msg, state) do
-    {:ok, state}
+    {:ok, %{sinks: sinks}}
   end
 
-  def terminate(_reason, _state) do
-    :ok
-  end
-
-  def code_change(_old, state, _extra) do
-    {:ok, state}
+  defp extra_sinks do
+    for {name, _} <- Application.get_env(:lager, :extra_sinks, []), do: name
   end
 end
