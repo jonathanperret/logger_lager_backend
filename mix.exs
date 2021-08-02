@@ -26,7 +26,7 @@ defmodule LoggerLagerBackend.Mixfile do
 
   defp deps do
     [
-      {:lager, "~> 3.2"},
+      {:lager, "~> 3.9"},
     ]
   end
 end
